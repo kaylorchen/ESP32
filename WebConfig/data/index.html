@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ESP32 Configuration</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  
+  <body>
+	<div style="text-align:center;">
+	   <div id="Layer1" style="position:absolute; width:100%; height:100%; z-index:-1">  
+         <img src="test.jpg" style="max-width:100%;" alt="">
+       </div>
+      <h1  style="color:#88b9ff;">Welcome</h1>
+
+	   <div  class="starter-template";>
+		  <div style="color:#E633FF;">
+
+		    <h4  style="color:#88b9ff;">Wifi Information</h4>
+            <form action=""  style="color:#E633FF; ">
+				<div class="block">
+					<input type="text" id="wifiname" placeholder="Enter SSID" />
+				</div>
+				<div class="block">
+					<input type="text" id="wifipwd" placeholder="Enter Password" />
+				</div>
+            </form>
+			<button onclick='setWifi(wifiname.value,wifipwd.value)' style="background-color: #7ED320;width: 76px;height: 36px;color: #FFFFFF">Connect</button>
+	    </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+	<div  class="starter-template";clear:both;text-align:center;">
+            
+			<h3 style="color:#88b9ff;">LED Control</h3>
+			<button onclick='LEDControl()' id="led" style="background-color: #7ED320;width: 76px;height: 36px;color: #FFFFFF">TOGGLE</button>
+			<p style="color:#88b9ff;">LED Status:
+			<span id="ledStatus"></span></p>
+        </div>
+
+        <script type="text/javascript">
+		function LEDControl() {
+
+			// alert(document.getElementById("led").innerHTML);
+			para = document.getElementById("ledStatus").innerHTML;
+            var xmlhttp;
+            if(para == "ON")
+			{
+				value = "OFF"
+			}
+			else
+			{
+				value = "ON"
+			}
+
+			
+            if (window.XMLHttpRequest)
+            {
+            // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp=new XMLHttpRequest();
+            }
+            else
+            {
+			// IE6, IE5 浏览器执行代码
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById("ledStatus").innerHTML = xmlhttp.responseText;
+				}
+			}
+
+            
+            var requestString = "/led?value=" + value + "&pin=2";
+			xmlhttp.open("GET", requestString, true);
+			xmlhttp.send(null);
+		}
+		
+		function setWifi(name,pwd) {
+            var xmlhttp;
+            if (name.length==0)
+            { 
+			alert("SSID is empty!")
+            return;
+            }
+			
+            if (window.XMLHttpRequest)
+            {
+            // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp=new XMLHttpRequest();
+            }
+            else
+            {
+			// IE6, IE5 浏览器执行代码
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+			
+            xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200){
+            document.getElementById("wifiState").innerHTML = xmlhttp.responseText;
+             }
+            }
+            
+            var requestString = "/wifi?config=on" + "&name="+name+"&pwd="+pwd;
+			xmlhttp.open("GET", requestString, true);
+			xmlhttp.send(null);
+		}
+	</script>
+  </body>
+</html>
