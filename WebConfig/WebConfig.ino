@@ -5,8 +5,8 @@
 #include "SPIFFS.h"
 #include "FS.h"
 
-const char* ssid = "Xiaomi_kaylordut";
-const char* password = "kaylordut.com";
+char ssid[50] = "";
+char password[50] = "";
 
 WebServer server(80);
 const int led = 2;
@@ -62,6 +62,31 @@ void handleLED(){
       }
 }
 
+void handleWifi(){
+  if(server.hasArg("config")){
+      String config = server.arg("config");
+      String wifiname;
+      String wifipwd;
+      if(config == "on"){
+        if(server.hasArg("name")){
+          wifiname = server.arg("name");
+          }
+        if(server.hasArg("pwd")){
+          wifipwd = server.arg("pwd");
+          }
+          Serial.println("ssid: "+ wifiname +"\r\npassword: " + wifipwd);
+          wifiname.toCharArray(ssid, 50);
+          wifipwd.toCharArray(password, 50);
+          WiFi.mode(WIFI_STA);
+          if(WiFi.status() == WL_CONNECTED){
+            Serial.println("disconnect the original Wifi");
+            WiFi.disconnect();
+            }
+          Serial.println("handle Wifi end");
+        }
+    }  
+}
+
 void handleWebRequests(){
   if(loadFromSpiffs(server.uri())) return;
   String message = "File Not Detected\n\n";
@@ -79,40 +104,60 @@ void handleWebRequests(){
   Serial.println(message);
 }
 
+void softAPConfig(){
+  Serial.println("Configuring access point...");
+
+  // You can remove the password parameter if you want the AP to be open.
+  uint32_t chipID = ESP.getEfuseMac();
+  String apName = "ESP32_" + String(chipID, HEX);
+  Serial.println("AP name: " + apName );
+  WiFi.mode(WIFI_AP);
+  WiFi.softAP(apName.c_str());
+  IPAddress myIP = WiFi.softAPIP();
+  Serial.print("AP IP address: ");
+  Serial.println(myIP);  
+}
+
+void wifiConfig(){
+    Serial.print("Connecting to ");
+    Serial.println(ssid);
+    WiFi.mode(WIFI_STA);
+    WiFi.begin(ssid, password);
+
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+        Serial.print(".");
+    }
+
+    Serial.println("");
+    Serial.println("WiFi connected");
+    Serial.println("IP address: ");
+    Serial.println(WiFi.localIP());
+}
+
+
 
 void setup() {
   // put your setup code here, to run once:
   pinMode(led, OUTPUT);
   digitalWrite(led, 0);
   Serial.begin(115200);
+  delay(3000);
 
   if(!SPIFFS.begin(true)){
     Serial.println("An Error has occurred while mounting SPIFFS");
     return;
   }
   listDir(SPIFFS, "/", 0);
-  delay(3000);
+  softAPConfig();
 
   
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
-  Serial.println("");
-
-  // Wait for connection
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("");
-  Serial.print("Connected to ");
-  Serial.println(ssid);
-  Serial.print("IP address: ");
-  Serial.println(WiFi.localIP());
 
   server.on("/", handleRoot);
   server.on("/led", HTTP_GET, handleLED);
-   server.onNotFound(handleWebRequests);
-    server.begin();
+  server.on("/wifi", HTTP_GET, handleWifi);
+  server.onNotFound(handleWebRequests);
+  server.begin();
   Serial.println("HTTP server started");
 
 }
@@ -120,7 +165,9 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   server.handleClient();
-//  Serial.println("loop");
+  if(WiFi.status() != WL_CONNECTED && WiFi.getMode() == WIFI_STA){
+      wifiConfig();
+    }
 }
 
 bool loadFromSpiffs(String path){
