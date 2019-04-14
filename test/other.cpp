@@ -10,7 +10,9 @@ void other::setup() {
 }
 
 void other::loop() {
- delay(1000);
- Serial.println("This is a test.");
- Serial.println("FUCK!!!");
+    while (1)
+    {
+        delay(1000);
+        Serial.println("This is a test.");
+    }
 }
