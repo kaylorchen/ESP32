@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"name": "BLE_CTL_LED",
+			"path": "BLE_CTL_LED"
+		},
+		{
+			"path": "WebConfig"
+		},
+		{
+			"name": "MQTT",
+			"path": "MQTT"
+		}
+	],
+	"settings": {
+		"terminal.integrated.env.osx": {
+			"PATH": "/Users/kaylor/.platformio/penv/bin:/Users/kaylor/.platformio/penv:/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/kaylor/gcc-arm-none-eabi-7-2018-q2-update/bin",
+			"PLATFORMIO_CALLER": "vscode"
+		},
+		"files.associations": {
+			"functional": "cpp"
+		}
+	}
+}
