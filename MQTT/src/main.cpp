@@ -4,12 +4,12 @@
 // Update these with values suitable for your network.
 
 #define BUILTIN_LED 2
-const char* ssid = "kaylor";
-const char* password = "20160624";
-const char* mqtt_server = "m16.cloudmqtt.com";
-const int mqtt_port = 10055;
-const char* mqtt_user  = "vtivruvp";
-const char* mqtt_passwd = "XHMtmmtSdGXt";
+const char* ssid = "Xiaomi_kaylordut";
+const char* password = "kaylordut.com";
+const char* mqtt_server = "mqtt.kaylordut.com";
+const int mqtt_port = 11111;
+const char* mqtt_user  = "test";
+const char* mqtt_passwd = "test";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -44,18 +44,22 @@ void callback(char* topic, byte* payload, unsigned int length) {
   Serial.print("Message arrived [");
   Serial.print(topic);
   Serial.print("] ");
+  char _msg[length + 1]; 
   for (int i = 0; i < length; i++) {
     Serial.print((char)payload[i]);
+    _msg[i]  = (char) payload[i];
   }
-  Serial.println();
+   Serial.println();
+  Serial.print("msg = ");
+  _msg[length] = 0;
+  Serial.println(_msg);
 
-  // Switch on the LED if an 1 was received as first character
-  if ((char)payload[0] == '1') {
-    digitalWrite(BUILTIN_LED, LOW);   // Turn the LED on (Note that LOW is the voltage level
-    // but actually the LED is on; this is because
-    // it is active low on the ESP-01)
-  } else {
-    digitalWrite(BUILTIN_LED, HIGH);  // Turn the LED off by making the voltage HIGH
+  
+  if (std::string(_msg) == "ON" || std::string(_msg) == "On" || std::string(_msg) == "on" ) {
+    digitalWrite(BUILTIN_LED, HIGH);   
+
+  } else if(std::string(_msg) == "OFF" || std::string(_msg) == "Off" || std::string(_msg) == "off" ){
+    digitalWrite(BUILTIN_LED, LOW);  
   }
 
 }

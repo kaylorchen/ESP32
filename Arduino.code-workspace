@@ -22,6 +22,9 @@
 		},
 		{
 			"path": "SoftAp"
+		},
+		{
+			"path": "Station"
 		}
 	],
 	"settings": {
@@ -30,10 +33,41 @@
 			"PLATFORMIO_CALLER": "vscode"
 		},
 		"files.associations": {
-			"functional": "cpp"
+			"functional": "cpp",
+			"array": "cpp",
+			"*.tcc": "cpp",
+			"cctype": "cpp",
+			"clocale": "cpp",
+			"cmath": "cpp",
+			"cstdint": "cpp",
+			"cstdio": "cpp",
+			"cstdlib": "cpp",
+			"cwchar": "cpp",
+			"cwctype": "cpp",
+			"deque": "cpp",
+			"unordered_map": "cpp",
+			"vector": "cpp",
+			"exception": "cpp",
+			"fstream": "cpp",
+			"initializer_list": "cpp",
+			"iosfwd": "cpp",
+			"istream": "cpp",
+			"limits": "cpp",
+			"memory": "cpp",
+			"new": "cpp",
+			"ostream": "cpp",
+			"numeric": "cpp",
+			"sstream": "cpp",
+			"stdexcept": "cpp",
+			"streambuf": "cpp",
+			"system_error": "cpp",
+			"type_traits": "cpp",
+			"tuple": "cpp",
+			"typeinfo": "cpp",
+			"utility": "cpp"
 		},
 		"terminal.integrated.env.windows": {
-			"PATH": "D:\\Cadence\\pcbenv\\.platformio\\penv\\Scripts;D:\\Cadence\\pcbenv\\.platformio\\penv;D:\\Program Files (x86)\\Microchip\\MPLAB C30\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;D:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Skype\\Phone\\;D:\\Program Files\\MATLAB\\R2016a\\runtime\\win64;D:\\Program Files\\MATLAB\\R2016a\\bin;D:\\Program Files\\MATLAB\\MATLAB Production Server\\R2015a\\runtime\\win64;D:\\Program Files\\MATLAB\\MATLAB Production Server\\R2015a\\bin;D:\\Program Files\\MATLAB\\MATLAB Production Server\\R2015a\\polyspace\\bin;D:\\Program Files\\MATLAB\\R2016a\\polyspace\\bin;D:\\Program Files (x86)\\GNU Tools Arm Embedded\\7 2018-q2-update\\bin;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;D:\\Program Files (x86)\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin;D:\\Program Files\\Python\\Scripts\\;D:\\Program Files\\Python\\;D:\\Cadence\\SPB_16.6\\openaccess\\bin\\win32\\opt;D:\\Cadence\\SPB_16.6\\tools\\capture;D:\\Cadence\\SPB_16.6\\tools\\pspice;D:\\Cadence\\SPB_16.6\\tools\\specctra\\bin;D:\\Cadence\\SPB_16.6\\tools\\fet\\bin;D:\\Cadence\\SPB_16.6\\tools\\libutil\\bin;D:\\Cadence\\SPB_16.6\\tools\\bin;D:\\Cadence\\SPB_16.6\\tools\\pcb\\bin;D:\\Program Files (x86)\\ClockworkMod\\Universal Adb Driver;C:\\Users\\Administrator\\AppData\\Local\\GitHubDesktop\\bin;D:\\Program Files\\JetBrains\\PyCharm 2018.3.5\\bin;;D:\\Program Files (x86)\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin;C:\\Program Files\\JetBrains\\CLion 2018.3.4\\bin;;D:\\Program Files\\JetBrains\\IntelliJ IDEA Community Edition 2019.1\\bin;;D:\\Program Files\\Microsoft VS Code\\bin;D:\\Program Files (x86)\\Microchip\\MPLAB C30\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;D:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Skype\\Phone\\;D:\\Program Files\\MATLAB\\R2016a\\runtime\\win64;D:\\Program Files\\MATLAB\\R2016a\\bin;D:\\Program Files\\MATLAB\\MATLAB Production Server\\R2015a\\runtime\\win64;D:\\Program Files\\MATLAB\\MATLAB Production Server\\R2015a\\bin;D:\\Program Files\\MATLAB\\MATLAB Production Server\\R2015a\\polyspace\\bin;D:\\Program Files\\MATLAB\\R2016a\\polyspace\\bin;D:\\Program Files (x86)\\GNU Tools Arm Embedded\\7 2018-q2-update\\bin;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;D:\\Program Files (x86)\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin;D:\\Program Files\\Python\\Scripts\\;D:\\Program Files\\Python\\;D:\\Cadence\\SPB_16.6\\openaccess\\bin\\win32\\opt;D:\\Cadence\\SPB_16.6\\tools\\capture;D:\\Cadence\\SPB_16.6\\tools\\pspice;D:\\Cadence\\SPB_16.6\\tools\\specctra\\bin;D:\\Cadence\\SPB_16.6\\tools\\fet\\bin;D:\\Cadence\\SPB_16.6\\tools\\libutil\\bin;D:\\Cadence\\SPB_16.6\\tools\\bin;D:\\Cadence\\SPB_16.6\\tools\\pcb\\bin;D:\\Program Files (x86)\\ClockworkMod\\Universal Adb Driver;C:\\Users\\Administrator\\AppData\\Local\\GitHubDesktop\\bin;D:\\Program Files\\JetBrains\\PyCharm 2018.3.5\\bin;;D:\\Program Files (x86)\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin;C:\\Program Files\\JetBrains\\CLion 2018.3.4\\bin;;D:\\Program Files\\JetBrains\\IntelliJ IDEA Community Edition 2019.1\\bin;;D:\\Program Files\\Microsoft VS Code\\bin",
+			"PATH": "D:\\Cadence\\pcbenv\\.platformio\\penv\\Scripts;D:\\Cadence\\pcbenv\\.platformio\\penv;D:\\Program Files (x86)\\Microchip\\MPLAB C30\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;D:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Skype\\Phone\\;D:\\Program Files\\MATLAB\\R2016a\\runtime\\win64;D:\\Program Files\\MATLAB\\R2016a\\bin;D:\\Program Files\\MATLAB\\MATLAB Production Server\\R2015a\\runtime\\win64;D:\\Program Files\\MATLAB\\MATLAB Production Server\\R2015a\\bin;D:\\Program Files\\MATLAB\\MATLAB Production Server\\R2015a\\polyspace\\bin;D:\\Program Files\\MATLAB\\R2016a\\polyspace\\bin;D:\\Program Files (x86)\\GNU Tools Arm Embedded\\7 2018-q2-update\\bin;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;D:\\Program Files (x86)\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin;D:\\Program Files\\nodejs\\;D:\\Program Files\\Python\\Scripts\\;D:\\Program Files\\Python\\;D:\\Cadence\\SPB_16.6\\openaccess\\bin\\win32\\opt;D:\\Cadence\\SPB_16.6\\tools\\capture;D:\\Cadence\\SPB_16.6\\tools\\pspice;D:\\Cadence\\SPB_16.6\\tools\\specctra\\bin;D:\\Cadence\\SPB_16.6\\tools\\fet\\bin;D:\\Cadence\\SPB_16.6\\tools\\libutil\\bin;D:\\Cadence\\SPB_16.6\\tools\\bin;D:\\Cadence\\SPB_16.6\\tools\\pcb\\bin;D:\\Program Files (x86)\\ClockworkMod\\Universal Adb Driver;C:\\Users\\Administrator\\AppData\\Local\\GitHubDesktop\\bin;D:\\Program Files\\JetBrains\\PyCharm 2018.3.5\\bin;;D:\\Program Files (x86)\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin;C:\\Program Files\\JetBrains\\CLion 2018.3.4\\bin;;D:\\Program Files\\JetBrains\\IntelliJ IDEA Community Edition 2019.1\\bin;;D:\\Program Files\\Microsoft VS Code\\bin;C:\\Users\\Administrator\\AppData\\Roaming\\npm;D:\\Program Files (x86)\\Microchip\\MPLAB C30\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;D:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Skype\\Phone\\;D:\\Program Files\\MATLAB\\R2016a\\runtime\\win64;D:\\Program Files\\MATLAB\\R2016a\\bin;D:\\Program Files\\MATLAB\\MATLAB Production Server\\R2015a\\runtime\\win64;D:\\Program Files\\MATLAB\\MATLAB Production Server\\R2015a\\bin;D:\\Program Files\\MATLAB\\MATLAB Production Server\\R2015a\\polyspace\\bin;D:\\Program Files\\MATLAB\\R2016a\\polyspace\\bin;D:\\Program Files (x86)\\GNU Tools Arm Embedded\\7 2018-q2-update\\bin;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;D:\\Program Files (x86)\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin;D:\\Program Files\\nodejs\\;D:\\Program Files\\Python\\Scripts\\;D:\\Program Files\\Python\\;D:\\Cadence\\SPB_16.6\\openaccess\\bin\\win32\\opt;D:\\Cadence\\SPB_16.6\\tools\\capture;D:\\Cadence\\SPB_16.6\\tools\\pspice;D:\\Cadence\\SPB_16.6\\tools\\specctra\\bin;D:\\Cadence\\SPB_16.6\\tools\\fet\\bin;D:\\Cadence\\SPB_16.6\\tools\\libutil\\bin;D:\\Cadence\\SPB_16.6\\tools\\bin;D:\\Cadence\\SPB_16.6\\tools\\pcb\\bin;D:\\Program Files (x86)\\ClockworkMod\\Universal Adb Driver;C:\\Users\\Administrator\\AppData\\Local\\GitHubDesktop\\bin;D:\\Program Files\\JetBrains\\PyCharm 2018.3.5\\bin;;D:\\Program Files (x86)\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin;C:\\Program Files\\JetBrains\\CLion 2018.3.4\\bin;;D:\\Program Files\\JetBrains\\IntelliJ IDEA Community Edition 2019.1\\bin;;D:\\Program Files\\Microsoft VS Code\\bin;C:\\Users\\Administrator\\AppData\\Roaming\\npm",
 			"PLATFORMIO_CALLER": "vscode"
 		}
 	}
